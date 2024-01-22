@@ -1,3 +1,8 @@
+<?php
+session_start();
+include 'config/config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +16,8 @@
    <link rel="shortcut icon" href="assets/img/favicon.png">
    <!-- bootstrap css -->
    <link rel="stylesheet" href="assets/plugins/bootstrap-5.2.3/css/bootstrap.min.css">
+   <!-- fontawesome css -->
+   <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.5.0-web/css/all.css">
    <!-- title -->
    <title>Dashboard - ELTIPONSEL</title>
 </head>
@@ -28,23 +35,35 @@
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-               <li class="nav-item">
-                  <a class="nav-link <?= $_GET['module'] == 'beranda' ? 'active' : '' ?>" aria-current="page" href="index.php?module=beranda">Beranda</a>
+               <li class="nav-item me-1">
+                  <a class="nav-link <?= $_GET['module'] == 'beranda' ? 'active' : '' ?>" aria-current="page" href="index.php?module=beranda">
+                     <i class="fas fa-home"></i> Beranda
+                  </a>
+               </li>
+               <li class="nav-item me-1">
+                  <a class="nav-link <?= $_GET['module'] == 'pelanggan' ? 'active' : '' ?>" aria-current="page" href="index.php?module=pelanggan">
+                     <i class="fas fa-user-friends"></i> Pelanggan
+                  </a>
+               </li>
+               <li class="nav-item me-1">
+                  <a class="nav-link <?= $_GET['module'] == 'pulsa' ? 'active' : '' ?>" aria-current="page" href="index.php?module=pulsa">
+                     <i class="fas fa-mobile-alt"></i> Pulsa
+                  </a>
+               </li>
+               <li class="nav-item me-1">
+                  <a class="nav-link <?= $_GET['module'] == 'penjualan' ? 'active' : '' ?>" aria-current="page" href="index.php?module=penjualan">
+                     <i class="fas fa-cart-plus"></i> Penjualan
+                  </a>
+               </li>
+               <li class="nav-item me-1">
+                  <a class="nav-link <?= $_GET['module'] == 'laporan' ? 'active' : '' ?>" aria-current="page" href="index.php?module=laporan">
+                     <i class="fas fa-book"></i> Laporan
+                  </a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link <?= $_GET['module'] == 'pelanggan' ? 'active' : '' ?>" aria-current="page" href="index.php?module=pelanggan">Pelanggan</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link <?= $_GET['module'] == 'pulsa' ? 'active' : '' ?>" aria-current="page" href="index.php?module=pulsa">Pulsa</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link <?= $_GET['module'] == 'penjualan' ? 'active' : '' ?>" aria-current="page" href="index.php?module=penjualan">Penjualan</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link <?= $_GET['module'] == 'laporan' ? 'active' : '' ?>" aria-current="page" href="index.php?module=laporan">Laporan</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="logout.php">Logout</a>
+                  <a class="nav-link" aria-current="page" href="logout.php">
+                     <i class="fas fa-sign-out-alt"></i> Logout
+                  </a>
                </li>
             </ul>
          </div>
@@ -54,31 +73,7 @@
    <!-- main -->
    <main role="main" class="container">
       <?php
-      switch ($_GET['module']) {
-         case 'beranda':
-            echo 'Halaman Beranda';
-            break;
-
-         case 'pelanggan':
-            echo 'Halaman Pelanggan';
-            break;
-
-         case 'pulsa':
-            echo 'Halaman Pulsa';
-            break;
-
-         case 'penjualan':
-            echo 'Halaman Penjualan';
-            break;
-
-         case 'laporan':
-            echo 'Halaman Laporan';
-            break;
-
-         default:
-            echo 'Halaman Tidak Ditemukan';
-            break;
-      }
+      include 'content.php';
       ?>
    </main>
 
@@ -91,6 +86,8 @@
 
    <!-- bootstrap js -->
    <script src="assets/plugins/bootstrap-5.2.3/js/bootstrap.bundle.min.js"></script>
+   <!-- fontawesome js -->
+   <script src="assets/plugins/fontawesome-free-5.5.0-web/js/all.js"></script>
 </body>
 
 </html>

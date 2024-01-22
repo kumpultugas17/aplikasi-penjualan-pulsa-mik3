@@ -13,7 +13,7 @@
             <i class="fas fa-user text-warning fa-7x"></i>
          </div>
          <div class="card-body">
-            <h4 class="card-title" id="loadPelanggan"><?= $get_pelanggan; ?></h4>
+            <h4 class="card-title" id="loadPelanggan"><?= @$get_pelanggan; ?></h4>
             <p class="card-text">Data Pelanggan</p>
          </div>
       </div>
@@ -25,7 +25,7 @@
             <i class="fas fa-tablet-alt text-info fa-7x"></i>
          </div>
          <div class="card-body">
-            <h4 class="card-title" id="loadPulsa"><?= $get_pulsa; ?></h4>
+            <h4 class="card-title" id="loadPulsa"><?= @$get_pulsa; ?></h4>
             <p class="card-text">Data Pulsa</p>
          </div>
       </div>
@@ -37,7 +37,7 @@
             <i class="fas fa-shopping-cart text-danger fa-7x"></i>
          </div>
          <div class="card-body">
-            <h4 class="card-title" id="loadPenjualan"><?= $get_penjualan; ?></h4>
+            <h4 class="card-title" id="loadPenjualan"><?= @$get_penjualan; ?></h4>
             <p class="card-text">Data Penjualan</p>
          </div>
       </div>
@@ -49,7 +49,7 @@
             <i class="fas fa-dollar-sign text-success fa-7x"></i>
          </div>
          <div class="card-body">
-            <h4 class="card-title" id="loadTotal">Rp <?= number_format($get['total_penjualan'], 2, ',', '.'); ?></h4>
+            <h4 class="card-title" id="loadTotal">Rp <?= number_format(@$get['total_penjualan'], 2, ',', '.'); ?></h4>
             <p class="card-text">Total Pendapatan</p>
          </div>
       </div>

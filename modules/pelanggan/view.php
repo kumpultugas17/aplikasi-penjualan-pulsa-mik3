@@ -131,14 +131,13 @@
    </div>
 </div>
 
-
 <!-- Modal Tambah-->
 <div class="modal fade" id="modalPelanggan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
             <h3 class="modal-title fs-5" id="staticBackdropLabel">
-               <i class="fas fa-edit"></i><span> Entry Data Pelanggan</span>
+               <i class="fas fa-user-plus"></i><span> Entry Data Pelanggan</span>
             </h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
