@@ -18,6 +18,10 @@ include 'config/config.php';
    <link rel="stylesheet" href="assets/plugins/bootstrap-5.2.3/css/bootstrap.min.css">
    <!-- fontawesome css -->
    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.5.0-web/css/all.css">
+   <!-- dataTable css -->
+   <link rel="stylesheet" href="assets/plugins/DataTables/datatables.min.css">
+   <!-- jQuery -->
+   <script src="assets/js/jquery-3.7.0.js"></script>
    <!-- title -->
    <title>Dashboard - ELTIPONSEL</title>
 </head>
@@ -88,6 +92,21 @@ include 'config/config.php';
    <script src="assets/plugins/bootstrap-5.2.3/js/bootstrap.bundle.min.js"></script>
    <!-- fontawesome js -->
    <script src="assets/plugins/fontawesome-free-5.5.0-web/js/all.js"></script>
+   <!-- dataTable js -->
+   <script src="assets/plugins/DataTables/datatables.min.js"></script>
+   <!-- myScript -->
+   <script>
+      $(document).ready(function() {
+         // dataTable
+         let table = $('#data').DataTable({
+            pageLength: 5,
+            lengthMenu:[
+               [5, 10, 20, -1],
+               [5, 10, 20, 'todos'],
+            ]
+         });
+      });
+   </script>
 </body>
 
 </html>

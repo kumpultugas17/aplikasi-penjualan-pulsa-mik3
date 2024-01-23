@@ -39,7 +39,7 @@
       unset($_SESSION['alert']);
       ?>
       <div class="table-responsive">
-         <table class="table table-striped table-bordered" id="dataTable" style="width:100%">
+         <table class="table table-striped table-bordered" id="data" style="width:100%">
             <thead>
                <tr>
                   <th>No.</th>
