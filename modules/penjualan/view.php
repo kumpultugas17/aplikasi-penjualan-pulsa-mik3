@@ -2,10 +2,10 @@
    <div class="col-md-12">
       <h5>
          <!-- judul halaman tampil data penjualan -->
-         <i class="fas fa-user-friends me-1 title-icon"></i> Data Pelanggan
+         <i class="fas fa-shopping-cart me-1"></i> Data Penjualan
 
          <!-- Button trigger modal -->
-         <button type="button" class="btn btn-sm btn-info text-white float-end" data-bs-toggle="modal" data-bs-target="#modalPelanggan">
+         <button type="button" class="btn btn-sm btn-info text-white float-end" data-bs-toggle="modal" data-bs-target="#modalTambah">
             <i class="fas fa-plus"></i> Tambah
          </button>
       </h5>
@@ -42,52 +42,56 @@
          <table class="table table-striped border" id="data">
             <thead>
                <tr>
-                  <th>No.</th>
+                  <th>No</th>
+                  <th>Tanggal</th>
                   <th>Nama Pelanggan</th>
-                  <th>Nomo HP</th>
+                  <th>Operator</th>
+                  <th>Harga</th>
                   <th></th>
                </tr>
             </thead>
             <tbody>
                <?php
                $no = 1;
-               $query = $conn->query("SELECT * FROM pelanggan ORDER BY id_pelanggan DESC");
-               foreach ($query as $plg) :
+               $query = $conn->query("SELECT * FROM penjualan INNER JOIN pelanggan ON penjualan.pelanggan_id = pelanggan.id_pelanggan INNER JOIN pulsa ON penjualan.pulsa_id = pulsa.id_pulsa ORDER BY id_penjualan DESC");
+               foreach ($query as $pjl) :
                ?>
                   <tr>
                      <td><?= $no++; ?></td>
-                     <td><?= $plg['nama_pelanggan']; ?></td>
-                     <td><?= $plg['no_hp']; ?></td>
+                     <td><?= $pjl['tanggal']; ?></td>
+                     <td><?= $pjl['nama_pelanggan'] . "<small class='text-muted'> - " . $pjl['no_hp'] . "</small>"; ?></td>
+                     <td><?= $pjl['operator'] . "<small class='text-muted'> - " . $pjl['nominal'] . "</small>"; ?></td>
+                     <td>Rp. <?= number_format($pjl['harga'], 0, ',', '.') ?></td>
                      <td>
-                        <button type="button" class="btn btn-sm btn-info text-white" data-bs-target="#editPelanggan<?= $plg['id_pelanggan'] ?>" data-bs-toggle="modal">
+                        <button type="button" class="btn btn-sm btn-info text-white" data-bs-target="#editpenjualan<?= $pjl['id_penjualan'] ?>" data-bs-toggle="modal">
                            <i class="fas fa-edit"></i>
                         </button>
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-target="#hapusPelanggan<?= $plg['id_pelanggan'] ?>" data-bs-toggle="modal">
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-target="#hapuspenjualan<?= $pjl['id_penjualan'] ?>" data-bs-toggle="modal">
                            <i class="fas fa-trash"></i>
                         </button>
                      </td>
                   </tr>
 
                   <!-- Modal Edit-->
-                  <div class="modal fade" id="editPelanggan<?= $plg['id_pelanggan'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal fade" id="editpenjualan<?= $pjl['id_penjualan'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">
                            <div class="modal-header">
                               <h3 class="modal-title fs-5" id="staticBackdropLabel">
-                                 <i class="fas fa-user-edit"></i><span> Edit Data Pelanggan</span>
+                                 <i class="fas fa-user-edit"></i><span> Edit Data penjualan</span>
                               </h3>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>
-                           <form action="modules/pelanggan/proses_edit.php" method="POST">
-                              <input type="hidden" name="id_pelanggan" value="<?= $plg['id_pelanggan']; ?>">
+                           <form action="modules/penjualan/proses_edit.php" method="POST">
+                              <input type="hidden" name="id_penjualan" value="<?= $pjl['id_penjualan']; ?>">
                               <div class="modal-body px-4">
                                  <div class="mb-2">
-                                    <label class="form-label" for="nama_pelanggan">Nama Pelanggan</label>
-                                    <input type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan" value="<?= $plg['nama_pelanggan']; ?>" autocomplete="off">
+                                    <label class="form-label" for="nama_penjualan">Nama penjualan</label>
+                                    <input type="text" class="form-control" id="nama_penjualan" name="nama_penjualan" value="<?= $pjl['nama_penjualan']; ?>" autocomplete="off">
                                  </div>
                                  <div class="mb-2">
                                     <label class="form-label" for="no_hp">Nomor Handphone</label>
-                                    <input type="number" class="form-control" id="no_hp" name="no_hp" value="<?= $plg['no_hp']; ?>" autocomplete="off">
+                                    <input type="number" class="form-control" id="no_hp" name="no_hp" value="<?= $pjl['no_hp']; ?>" autocomplete="off">
                                  </div>
                               </div>
                               <div class="modal-footer">
@@ -100,19 +104,19 @@
                   </div>
 
                   <!-- Modal Hapus-->
-                  <div class="modal fade" id="hapusPelanggan<?= $plg['id_pelanggan'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal fade" id="hapuspenjualan<?= $pjl['id_penjualan'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">
                            <div class="modal-header">
                               <h3 class="modal-title fs-5" id="staticBackdropLabel">
-                                 <i class="fas fa-trash"></i><span> Hapus Data Pelanggan</span>
+                                 <i class="fas fa-trash"></i><span> Hapus Data penjualan</span>
                               </h3>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>
-                           <form action="modules/pelanggan/proses_hapus.php" method="POST">
+                           <form action="modules/penjualan/proses_hapus.php" method="POST">
                               <div class="modal-body px-4">
-                                 <input type="hidden" name="id_pelanggan" value="<?= $plg['id_pelanggan']; ?>">
-                                 <div class="fs-6">Apakah Pelanggan <strong><?= $plg['nama_pelanggan'] ?></strong> dengan nomor handphone <strong><?= $plg['no_hp'] ?></strong> akan dihapus?</div>
+                                 <input type="hidden" name="id_penjualan" value="<?= $pjl['id_penjualan']; ?>">
+                                 <div class="fs-6">Apakah penjualan <strong><?= $pjl['nama_penjualan'] ?></strong> dengan nomor handphone <strong><?= $pjl['no_hp'] ?></strong> akan dihapus?</div>
                               </div>
                               <div class="modal-footer">
                                  <button type="submit" name="submit" class="btn btn-sm text-white btn-danger">Hapus</button>
@@ -132,19 +136,19 @@
 </div>
 
 <!-- Modal Tambah-->
-<div class="modal fade" id="modalPelanggan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="modalTambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
             <h3 class="modal-title fs-5" id="staticBackdropLabel">
-               <i class="fas fa-user-plus"></i><span> Entry Data Pelanggan</span>
+               <i class="fas fa-user-plus"></i><span> Entry Data penjualan</span>
             </h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
-         <form action="modules/pelanggan/proses_tambah.php" method="POST">
+         <form action="modules/penjualan/proses_tambah.php" method="POST">
             <div class="modal-body px-4">
                <div class="mb-2">
-                  <label class="form-label">Nama Pelanggan</label>
+                  <label class="form-label">Nama penjualan</label>
                   <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" autocomplete="off">
                </div>
                <div class="mb-2">

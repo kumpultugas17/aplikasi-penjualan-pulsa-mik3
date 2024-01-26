@@ -20,6 +20,8 @@ include 'config/config.php';
    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.5.0-web/css/all.css">
    <!-- dataTable css -->
    <link rel="stylesheet" href="assets/plugins/DataTables/datatables.min.css">
+   <!-- custom css -->
+   <link rel="stylesheet" href="assets/css/style.css">
    <!-- jQuery -->
    <script src="assets/js/jquery-3.7.0.js"></script>
    <!-- title -->
@@ -100,7 +102,7 @@ include 'config/config.php';
          // dataTable
          let table = $('#data').DataTable({
             pageLength: 5,
-            lengthMenu:[
+            lengthMenu: [
                [5, 10, 20, -1],
                [5, 10, 20, 'todos'],
             ]

@@ -1,0 +1,19 @@
+<?php
+require_once '../../config/config.php';
+
+if (isset($_POST['submit'])) {
+   $id_pulsa = $_POST['id_pulsa'];
+
+   $query = $conn->query("DELETE FROM pulsa WHERE id_pulsa = '$id_pulsa'");
+
+   if ($query) {
+      session_start();
+      $_SESSION['alert'] = 'Menghapus data operator.';
+   } else {
+      session_start();
+      $_SESSION['alert'] = 'Menghapus data operator.';
+   }
+   header('location:../../index.php?module=pulsa');
+} else {
+   header('location:../../index.php?module=pulsa');
+}

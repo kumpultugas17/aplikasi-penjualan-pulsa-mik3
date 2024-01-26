@@ -2,7 +2,7 @@
    <div class="col-md-12">
       <h5>
          <!-- judul halaman tampil data penjualan -->
-         <i class="fas fa-tablet-alt title-icon"></i> Data Pulsa
+         <i class="fas fa-mobile-alt"></i> Data Pulsa
 
          <!-- Button trigger modal -->
          <button type="button" class="btn btn-sm btn-info text-white float-end" data-bs-toggle="modal" data-bs-target="#addPulsa">
@@ -39,7 +39,7 @@
       unset($_SESSION['alert']);
       ?>
       <div class="table-responsive">
-         <table class="table table-striped table-bordered" id="data" style="width:100%">
+         <table class="table table-striped table-bordered" id="data">
             <thead>
                <tr>
                   <th>No.</th>
@@ -76,16 +76,16 @@
                         <div class="modal-content">
                            <div class="modal-header">
                               <h3 class="modal-title fs-5" id="staticBackdropLabel">
-                                 <i class="fas fa-edit"></i><span> Update Data Pulsa</span>
+                                 <i class="fas fa-edit"></i><span> Edit Data Pulsa</span>
                               </h3>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>
-                           <form action="modules/pulsa/proses_update.php" method="POST">
+                           <form action="modules/pulsa/proses_edit.php" method="POST">
                               <input type="hidden" name="id_pulsa" value="<?= $pls['id_pulsa']; ?>">
                               <div class="modal-body px-4">
                                  <div class="mb-2">
                                     <label for="operaotr" class="form-label">Operator</label>
-                                    <input type="text" class="form-control" id="operaotr" name="operaotr" value="<?= $pls['operaotr'] ?>" autocomplete="off">
+                                    <input type="text" class="form-control" id="operaotr" name="operaotr" value="<?= $pls['operator'] ?>" autocomplete="off">
                                  </div>
                                  <div class="mb-2">
                                     <label class="form-label" for="nominal">Nominal</label>
@@ -136,7 +136,6 @@
       </div>
    </div>
 </div>
-
 
 <!-- Modal Tambah-->
 <div class="modal fade" id="addPulsa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
