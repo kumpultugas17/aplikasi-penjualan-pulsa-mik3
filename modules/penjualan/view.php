@@ -141,19 +141,48 @@
       <div class="modal-content">
          <div class="modal-header">
             <h3 class="modal-title fs-5" id="staticBackdropLabel">
-               <i class="fas fa-user-plus"></i><span> Entry Data penjualan</span>
+               <i class="fas fa-cart-plus"></i><span> Entry Data penjualan</span>
             </h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
          <form action="modules/penjualan/proses_tambah.php" method="POST">
             <div class="modal-body px-4">
                <div class="mb-2">
-                  <label class="form-label">Nama penjualan</label>
-                  <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" autocomplete="off">
+                  <label class="form-label" for="tanggal">Tanggal</label>
+                  <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= date('Y-m-d') ?>" autocomplete="off">
                </div>
                <div class="mb-2">
-                  <label class="form-label" for="no_hp">No. HP</label>
-                  <input type="number" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan nomor hp" autocomplete="off">
+                  <label class="form-label" for="no_hp">Nomor Handphone</label>
+                  <select name="pelanggan" id="pelanggan" class="form-select" onchange="get_pelanggan()">
+                     <?php
+                     $pelanggan = $conn->query("SELECT * FROM pelanggan");
+                     foreach ($pelanggan as $plg) :
+                     ?>
+                        <option value="<?= $plg['id_pelanggan'] ?>"><?= $plg['no_hp'] ?></option>
+                     <?php endforeach ?>
+                  </select>
+               </div>
+
+               <div class="mb-2">
+                  <label class="form-label" for="nama_pelanggan">Nama Pelanggan</label>
+                  <input type="text" id="nama_pelanggan" class="form-control">
+               </div>
+
+               <div class="mb-2">
+                  <label class="form-label" for="operator">Operator Pulsa</label>
+                  <select name="pulsa" id="pulsa" class="form-select">
+                     <?php
+                     $pulsa = $conn->query("SELECT * FROM pulsa");
+                     foreach ($pulsa as $pls) :
+                     ?>
+                        <option value="<?= $pls['id_pulsa'] ?>"><?= $pls['operator'] . ' - ' . $pls['nominal'] ?></option>
+                     <?php endforeach ?>
+                  </select>
+               </div>
+
+               <div class="mb-2">
+                  <label class="form-label" for="harga">Harga</label>
+
                </div>
             </div>
             <div class="modal-footer">

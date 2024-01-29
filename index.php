@@ -108,6 +108,22 @@ include 'config/config.php';
             ]
          });
       });
+
+      // menampilkan nama pelanggan secara otomatis bedasarkan nomor telepon
+      function get_pelanggan() {
+         let id_pelanggan = $('#pelanggan').val();
+         $.ajax({
+            type: "GET",
+            url: "modules/penjualan/get_pelanggan.php",
+            data: {
+               id_pelanggan: id_pelanggan
+            },
+            dataType: "JSON",
+            success: function(result) {
+               $("#nama_pelanggan").val(result.nama_pelanggan)
+            }
+         });
+      }
    </script>
 </body>
 
