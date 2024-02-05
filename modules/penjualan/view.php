@@ -170,7 +170,7 @@
 
                <div class="mb-2">
                   <label class="form-label" for="operator">Operator Pulsa</label>
-                  <select name="pulsa" id="pulsa" class="form-select">
+                  <select name="pulsa" id="pulsa" class="form-select" onchange="get_pulsa()">
                      <?php
                      $pulsa = $conn->query("SELECT * FROM pulsa");
                      foreach ($pulsa as $pls) :
@@ -182,7 +182,7 @@
 
                <div class="mb-2">
                   <label class="form-label" for="harga">Harga</label>
-
+                  <input type="number" id="harga" class="form-control">
                </div>
             </div>
             <div class="modal-footer">
