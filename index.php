@@ -24,6 +24,8 @@ include 'config/config.php';
    <link rel="stylesheet" href="assets/css/style.css">
    <!-- jQuery -->
    <script src="assets/js/jquery-3.7.0.js"></script>
+   <!-- selectize css -->
+   <link rel="stylesheet" href="assets/plugins/selectize.js/css/selectize.bootstrap5.css">
    <!-- title -->
    <title>Dashboard - ELTIPONSEL</title>
 </head>
@@ -96,6 +98,8 @@ include 'config/config.php';
    <script src="assets/plugins/fontawesome-free-5.5.0-web/js/all.js"></script>
    <!-- dataTable js -->
    <script src="assets/plugins/DataTables/datatables.min.js"></script>
+   <!-- selectize js -->
+   <script src="assets/plugins/selectize.js/js/selectize.js"></script>
    <!-- myScript -->
    <script>
       $(document).ready(function() {
@@ -104,9 +108,12 @@ include 'config/config.php';
             pageLength: 5,
             lengthMenu: [
                [5, 10, 20, -1],
-               [5, 10, 20, 'todos'],
+               [5, 10, 20, 'semua'],
             ]
          });
+
+         // selectize
+         $('.select-box').selectize();
       });
 
       // menampilkan nama pelanggan secara otomatis bedasarkan nomor telepon
