@@ -150,7 +150,7 @@
 
                <div class="mb-2">
                   <label class="form-label" for="harga">Harga</label>
-                  <input type="number" id="harga" class="form-control">
+                  <input type="number" name="harga" id="harga" class="form-control">
                </div>
             </div>
             <div class="modal-footer">
