@@ -58,8 +58,6 @@
 
       <?php
       if (isset($_SESSION['tgl_awal'])) {
-         $tgl_awal = $_SESSION['tgl_awal'];
-         $tgl_akhir = $_SESSION['tgl_akhir'];
       ?>
 
          <hr class="my-4">

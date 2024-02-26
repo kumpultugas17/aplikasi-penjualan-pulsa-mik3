@@ -69,7 +69,7 @@ include 'config/config.php';
                   </a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="logout.php">
+                  <a class="nav-link" aria-current="page" href="logout.php" onclick="return confirm('Anda ingin keluar aplikasi?')">
                      <i class="fas fa-sign-out-alt"></i> Logout
                   </a>
                </li>
